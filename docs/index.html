@@ -1,0 +1,169 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>@dekkai/event-emitter - v1.0.0</title>
+	<meta name="description" content="Documentation for @dekkai/event-emitter - v1.0.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">@dekkai/event-emitter - v1.0.0</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1>@dekkai/event-emitter - v1.0.0</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<div align="center">
+					<p><img src="https://raw.githubusercontent.com/dekkai-csv/assets/master/svg/dekkai_event-emitter_banner_light.svg" alt="@dekkai/event-emitter"><br><img src="https://github.com/dekkai-csv/event-emitter/workflows/CI/badge.svg" alt="CI">
+					<img src="https://img.shields.io/badge/badges_are-meaningless-blue" alt="opinion"></p>
+				</div>
+				<a href="#dekkaievent-emitter" id="dekkaievent-emitter" style="color: inherit; text-decoration: none;">
+					<h1>@dekkai/event-emitter</h1>
+				</a>
+				<p>An event emitter class, supports omni-listeners and symbol events. Tested on browsers, node.js and deno.</p>
+				<p>Check out the full <a href="https://dekkai-csv.github.io/event-emitter/">API Documentation</a></p>
+				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+					<h2>Installation</h2>
+				</a>
+				<p><strong>Browser/NodeJS</strong></p>
+				<pre><code class="language-shell"><span class="hljs-meta">$</span><span class="bash"> yarn add @dekkai/event-emitter</span></code></pre>
+				<p><strong>Deno</strong></p>
+				<pre><code class="language-javascript"><span class="hljs-comment">// import from directly from a CDN, like unpkg.com</span>
+<span class="hljs-keyword">import</span> {EventEmitter} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;https://unpkg.com/@dekkai/event-emitter&#x27;</span>;</code></pre>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h2>Usage</h2>
+				</a>
+				<pre><code class="language-javascript"><span class="hljs-comment">// import EventEmitter</span>
+<span class="hljs-keyword">import</span> {EventEmitter} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@dekkai/event-emitter&#x27;</span>;
+
+<span class="hljs-comment">// can be extended</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyEmitter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">EventEmitter</span> </span>{
+    <span class="hljs-comment">// ...</span>
+}
+
+<span class="hljs-comment">// instantiate the emitter</span>
+<span class="hljs-keyword">const</span> emitter = <span class="hljs-keyword">new</span> MyEmitter();
+
+<span class="hljs-comment">// create an event handler</span>
+<span class="hljs-keyword">const</span> handler = <span class="hljs-function">(<span class="hljs-params">evt, num0, num1</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Event [<span class="hljs-subst">${evt.toString()}</span>] result: <span class="hljs-subst">${num0 + num1}</span>`</span>);
+
+<span class="hljs-comment">// register the handler</span>
+emitter.on(<span class="hljs-string">&#x27;add&#x27;</span>, handler);
+
+<span class="hljs-comment">// events can also be symbols</span>
+<span class="hljs-keyword">const</span> symbolEvent = <span class="hljs-built_in">Symbol</span>(<span class="hljs-string">&#x27;add-symbol&#x27;</span>);
+emitter.on(symbolEvent, handler);
+
+<span class="hljs-comment">// emit events</span>
+emitter.emit(<span class="hljs-string">&#x27;add&#x27;</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>); <span class="hljs-comment">// Event [add] result: 10</span>
+emitter.emit(symbolEvent, <span class="hljs-number">12</span>, <span class="hljs-number">8</span>); <span class="hljs-comment">// Event [Symbol(add-symbol)] result: 20</span>
+
+<span class="hljs-comment">// remove previously added listeners</span>
+emitter.off(<span class="hljs-string">&#x27;add&#x27;</span>, handler);
+emitter.off(symbolEvent, handler);
+
+<span class="hljs-comment">// use omni-listeners to catch all events, register them using the `omniEvent` static property</span>
+<span class="hljs-keyword">const</span> omniHandler = <span class="hljs-function"><span class="hljs-params">evt</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(evt.toString());
+emitter.on(MyEmitter.omniEvent, omniHandler);
+
+<span class="hljs-comment">// the omni-listener will catch all events</span>
+emitter.emit(<span class="hljs-string">&#x27;hello&#x27;</span>); <span class="hljs-comment">// hello</span>
+emitter.emit(<span class="hljs-built_in">Symbol</span>(<span class="hljs-string">&#x27;random symbol&#x27;</span>)); <span class="hljs-comment">// Symbol(random symbol)</span>
+
+<span class="hljs-comment">// removing omni-listeners works the same way as with regular listeners, but using the `omniEvent`</span>
+emitter.off(MyEmitter.omniEvent, omniHandler);</code></pre>
+				<p>Check out the full <a href="https://dekkai-csv.github.io/workers/">API Documentation</a></p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="classes/eventemitter.html" class="tsd-kind-icon">Event<wbr>Emitter</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#eventcallback" class="tsd-kind-icon">Event<wbr>Callback</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

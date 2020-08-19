@@ -1,7 +1,9 @@
 <div align="center">
 
 ![@dekkai/event-emitter](https://raw.githubusercontent.com/dekkai-csv/assets/master/svg/dekkai_event-emitter_banner_light.svg)  
-![CI](https://github.com/dekkai-csv/event-emitter/workflows/CI/badge.svg)
+![browser](https://github.com/dekkai-csv/event-emitter/workflows/browser/badge.svg)
+![node](https://github.com/dekkai-csv/event-emitter/workflows/node/badge.svg)
+![deno](https://github.com/dekkai-csv/event-emitter/workflows/deno/badge.svg)
 ![opinion](https://img.shields.io/badge/badges_are-meaningless-blue)
 
 </div>

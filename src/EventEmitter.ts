@@ -40,10 +40,12 @@ export class EventEmitter {
      * @param callback - Called when the event is emitted by this instance
      */
     public on(type: string | symbol, callback: EventCallback): void {
-        if (!this.listeners.has(type)) {
-            this.listeners.set(type, new Set());
+        const queue = this.listeners.get(type);
+        if (queue) {
+            queue.add(callback);
+        } else {
+            this.listeners.set(type, new Set([callback]));
         }
-        this.listeners.get(type).add(callback);
     }
 
     /**
@@ -52,10 +54,10 @@ export class EventEmitter {
      * @param callback - Callback function to remove
      */
     public off(type: string | symbol, callback: EventCallback): void {
-        if (!this.listeners.has(type)) {
-            return;
+        const queue = this.listeners.get(type);
+        if (queue) {
+            queue.delete(callback);
         }
-        this.listeners.get(type).delete(callback);
     }
 
     /**

@@ -1,9 +1,9 @@
 <div align="center">
 
-![@dekkai/event-emitter](https://raw.githubusercontent.com/dekkai-csv/assets/master/svg/dekkai_event-emitter_banner_light.svg)  
-![browser](https://github.com/dekkai-csv/event-emitter/workflows/browser/badge.svg)
-![node](https://github.com/dekkai-csv/event-emitter/workflows/node/badge.svg)
-![deno](https://github.com/dekkai-csv/event-emitter/workflows/deno/badge.svg)
+![@dekkai/event-emitter](https://raw.githubusercontent.com/dekkai-data/assets/master/svg/dekkai_event-emitter_banner_light.svg)  
+![browser](https://github.com/dekkai-data/event-emitter/workflows/browser/badge.svg)
+![node](https://github.com/dekkai-data/event-emitter/workflows/node/badge.svg)
+![deno](https://github.com/dekkai-data/event-emitter/workflows/deno/badge.svg)
 ![opinion](https://img.shields.io/badge/badges_are-meaningless-blue)
 
 </div>
@@ -12,7 +12,7 @@
 
 An event emitter class, supports omni-listeners and symbol events. Tested on browsers, node.js and deno.
 
-Check out the full [API Documentation](https://dekkai-csv.github.io/event-emitter/)
+Check out the full [API Documentation](https://dekkai-data.github.io/event-emitter/)
 
 ## Installation
 
@@ -71,4 +71,4 @@ emitter.emit(Symbol('random symbol')); // Symbol(random symbol)
 emitter.off(MyEmitter.omniEvent, omniHandler);
 ```
 
-Check out the full [API Documentation](https://dekkai-csv.github.io/workers/)
+Check out the full [API Documentation](https://dekkai-data.github.io/event-emitter/)

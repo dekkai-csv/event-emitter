@@ -1,4 +1,4 @@
-name: browser tests
+name: browser
 
 on: [push, pull_request] # Run on Push and Pull Requests
 

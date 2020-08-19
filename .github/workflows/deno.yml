@@ -1,4 +1,4 @@
-name: deno tests
+name: deno
 
 on: [push, pull_request] # Run on Push and Pull Requests
 

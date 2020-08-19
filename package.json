@@ -3,7 +3,7 @@
     "version": "1.0.2",
     "description": "An event emitter base class that supports omni-listeners. Supports browsers, node and deno.",
     "main": "build/lib/mod.js",
-    "repository": "https://github.com/dekkai-csv/event-emitter.git",
+    "repository": "https://github.com/dekkai-data/event-emitter.git",
     "author": "Dario Segura darionco.dev@gmail.com",
     "license": "MIT",
     "type": "module",

@@ -1,4 +1,4 @@
-name: CI
+name: deno tests
 
 on: [push, pull_request] # Run on Push and Pull Requests
 

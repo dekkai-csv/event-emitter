@@ -38,6 +38,14 @@ class MyEmitter extends EventEmitter {
     // ...
 }
 
+// used as a mixin
+const MyEmitter = EventEmitter.mixin(BaseClass);
+
+// or injected in the inheritance chain
+class MyEmitter extends EventEmitter.mixin(BaseClass) {
+    // ...
+}
+
 // instantiate the emitter
 const emitter = new MyEmitter();
 

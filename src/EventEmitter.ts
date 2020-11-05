@@ -18,7 +18,7 @@ class EventEmitterMixin {
      * @param Parent - The parent class into which the EventEmitter implementation will be mixed in.
      */
     public static mixin<T>(Parent: T) { // eslint-disable-line @typescript-eslint/explicit-function-return-type
-        const ParentConstructor = Parent as unknown as T & (new (...args: any[]) => {});
+        const ParentConstructor = Parent as unknown as T & (new (...args: any[]) => {}); // eslint-disable-line @typescript-eslint/ban-types
 
         class EventEmitter extends ParentConstructor {
             /**

@@ -252,7 +252,10 @@ async function run(env) {
 
         describe('Extended', function() {
             class Simple extends EventEmitter {
-                name = 'EventEmitter';
+                constructor() {
+                    super();
+                    this.name = 'EventEmitter';
+                }
                 sayHello() {
                     return `Hello ${this.name}!`;
                 }
@@ -276,7 +279,9 @@ async function run(env) {
 
         describe('Mixed In', function() {
             class Simple {
-                name = 'EventEmitter';
+                constructor() {
+                    this.name = 'EventEmitter';
+                }
                 sayHello() {
                     return `Hello ${this.name}!`;
                 }
@@ -300,14 +305,19 @@ async function run(env) {
 
         describe('Extended Mixed In', function() {
             class Simple {
-                name = 'EventEmitter';
+                constructor() {
+                    this.name = 'EventEmitter';
+                }
                 sayHello() {
                     return `Hello ${this.name}!`;
                 }
             }
 
             class Complex extends EventEmitter.mixin(Simple) {
-                byeString = 'Good bye';
+                constructor() {
+                    super();
+                    this.byeString = 'Good bye';
+                }
                 sayGoodBye() {
                     return `${this.byeString} ${this.name}!`;
                 }

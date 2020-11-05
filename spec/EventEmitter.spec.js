@@ -5,15 +5,10 @@ async function run(env) {
         chai,
     } = env;
 
-    describe('EventEmitter', function() {
-        const sym = Symbol('event');
-        const noOp = () => {};
-        let instance;
+    const sym = Symbol('event');
+    const noOp = () => {};
 
-        before(function () {
-            instance = new EventEmitter();
-        });
-
+    function eventTests(instance) {
         it('adds event listeners for string events', function() {
             instance.on('event', noOp);
             const listeners = instance.listeners.get('event');
@@ -246,6 +241,104 @@ async function run(env) {
             chai.expect(evtCount).to.equal(1);
 
             instance.off(EventEmitter.omniEvent, callback);
+        });
+    }
+
+    describe('EventEmitter', function() {
+        describe('Standalone', function() {
+            const instance = new EventEmitter();
+            eventTests(instance);
+        });
+
+        describe('Extended', function() {
+            class Simple extends EventEmitter {
+                name = 'EventEmitter';
+                sayHello() {
+                    return `Hello ${this.name}!`;
+                }
+            }
+
+            const instance = new Simple();
+            eventTests(instance);
+
+            it('can access inherited properties', function() {
+                chai.expect(instance.name).to.equal('EventEmitter');
+            });
+
+            it('can access inherited functions', function() {
+                chai.expect(instance.sayHello()).to.equal('Hello EventEmitter!');
+            });
+
+            it('correctly reports extended inheritance', function () {
+                chai.expect(instance instanceof Simple).to.equal(true);
+            });
+        });
+
+        describe('Mixed In', function() {
+            class Simple {
+                name = 'EventEmitter';
+                sayHello() {
+                    return `Hello ${this.name}!`;
+                }
+            }
+            const Mixed = EventEmitter.mixin(Simple);
+            const instance = new Mixed();
+            eventTests(instance);
+
+            it('can access inherited properties', function() {
+                chai.expect(instance.name).to.equal('EventEmitter');
+            });
+
+            it('can access inherited functions', function() {
+                chai.expect(instance.sayHello()).to.equal('Hello EventEmitter!');
+            });
+
+            it('correctly reports ancestor inheritance', function () {
+                chai.expect(instance instanceof Simple).to.equal(true);
+            });
+        });
+
+        describe('Extended Mixed In', function() {
+            class Simple {
+                name = 'EventEmitter';
+                sayHello() {
+                    return `Hello ${this.name}!`;
+                }
+            }
+
+            class Complex extends EventEmitter.mixin(Simple) {
+                byeString = 'Good bye';
+                sayGoodBye() {
+                    return `${this.byeString} ${this.name}!`;
+                }
+            }
+
+            const instance = new Complex();
+            eventTests(instance);
+
+            it('can access inherited properties', function() {
+                chai.expect(instance.name).to.equal('EventEmitter');
+            });
+
+            it('can access inherited functions', function() {
+                chai.expect(instance.sayHello()).to.equal('Hello EventEmitter!');
+            });
+
+            it('can access defined properties', function() {
+                chai.expect(instance.byeString).to.equal('Good bye');
+            });
+
+            it('can access defined functions', function() {
+                chai.expect(instance.sayGoodBye()).to.equal('Good bye EventEmitter!');
+            });
+
+            it('correctly reports ancestor inheritance', function () {
+                chai.expect(instance instanceof Simple).to.equal(true);
+            });
+
+            it('correctly reports extension inheritance', function () {
+                chai.expect(instance instanceof Complex).to.equal(true);
+            });
         });
     });
 }

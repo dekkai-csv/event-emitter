@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>@dekkai/event-emitter - v1.0.2</title>
-	<meta name="description" content="Documentation for @dekkai/event-emitter - v1.0.2">
+	<title>@dekkai/event-emitter - v1.1.0</title>
+	<meta name="description" content="Documentation for @dekkai/event-emitter - v1.1.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">@dekkai/event-emitter - v1.0.2</a>
+					<a href="index.html" class="title">@dekkai/event-emitter - v1.1.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -56,7 +56,7 @@
 					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
-			<h1>@dekkai/event-emitter - v1.0.2</h1>
+			<h1>@dekkai/event-emitter - v1.1.0</h1>
 		</div>
 	</div>
 </header>
@@ -91,6 +91,14 @@
 
 <span class="hljs-comment">// can be extended</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyEmitter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">EventEmitter</span> </span>{
+    <span class="hljs-comment">// ...</span>
+}
+
+<span class="hljs-comment">// used as a mixin</span>
+<span class="hljs-keyword">const</span> MyEmitter = EventEmitter.mixin(BaseClass);
+
+<span class="hljs-comment">// or injected in the inheritance chain</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyEmitter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">EventEmitter</span>.<span class="hljs-title">mixin</span>(<span class="hljs-title">BaseClass</span>) </span>{
     <span class="hljs-comment">// ...</span>
 }
 
@@ -154,10 +162,7 @@ emitter.off(MyEmitter.omniEvent, omniHandler);</code></pre>
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
 			</ul>
 		</div>
 	</div>
